@@ -1,1 +1,1 @@
-# cdp-corona-data-project
+# CDP - Corona data project

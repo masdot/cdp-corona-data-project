@@ -1,0 +1,22 @@
+name: Data update
+on:
+  workflow_dispatch: # allow for manual trigger
+  schedule:
+    # These hours are in UTC. i.e. result in a different local time in Germany,
+    # either +1 hour (winter) or +2 hours (summer).
+    - cron: "0 0,6,12,18,20 * * *"
+
+jobs:
+  scheduled-data-update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - name: 1) pip-install deps
+        run: pip install -r scripts/env/python-deps.txt
+      - name: execute py script
+        run: python rki-de.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

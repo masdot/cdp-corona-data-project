@@ -4,7 +4,7 @@ Copyright (c) 2021 masdot - Licensed under MIT License (https://github.com/masdo
 ---
 
 
-This file uses the current data CSV from the RKI to plot which, infection and death cases by age.
+This file uses the current data CSV from the RKI to plot infection and death cases by age.
 """
 
 import os

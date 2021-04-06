@@ -1,3 +1,12 @@
+"""
+NOTE: This code is part of CDP (Corona-Data-Proejct) developed by @masdot. 
+Copyright (c) 2021 masdot - Licensed under MIT License (https://github.com/masdot/cdp-corona-data-project/blob/main/LICENSE)
+---
+
+
+This file uses the current data CSV from the RKI to plot which, infection and death cases by age.
+"""
+
 import os
 import pandas as pd
 import matplotlib.pyplot as plt

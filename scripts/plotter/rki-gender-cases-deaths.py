@@ -28,10 +28,14 @@ RKIData = RKIData[RKIData.Altersgruppe.str.contains("unbekannt") == False]
 
 # Clean dataframe
 frame = RKIData.drop(['NeuGenesen', 'AnzahlGenesen', 'IstErkrankungsbeginn', 'ObjectId', 'IdBundesland', 'IdLandkreis', 'NeuerFall', 'NeuerTodesfall'],axis=1)
+frame = frame.groupby(['Geschlecht']).sum()
 
 # Plot dataframe
-plots = frame.groupby(['Geschlecht']).sum().plot(kind="bar",figsize=(20,10),secondary_y="AnzahlTodesfall",title='Infektionen und Todesfälle nach Geschlecht')
-plots.ticklabel_format(axis="y", style="plain")
+fig, axs = plt.subplots
+axs[0].plot(kind="bar",figsize=(20,10),secondary_y="AnzahlTodesfall",title='Infektionen und Todesfälle nach Geschlecht').ticklabel_format(axis="y", style="plain")
+# plots = frame.plot(kind="bar",figsize=(20,10),secondary_y="AnzahlTodesfall",title='Infektionen und Todesfälle nach Geschlecht')
+
+fig, axs = plt.subplots(2, 2)
 
 # Save file
 plt.savefig(os.path.join('plots/rki','gender-cases-deaths.png'),dpi=300,pad_inches=5)

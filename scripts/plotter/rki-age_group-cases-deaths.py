@@ -10,8 +10,6 @@ This file uses the current data CSV from the RKI to plot infection and death cas
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
-from datetime import date
 
 # Remove max from cols + row for large dataframes
 pd.set_option('display.max_columns', None)

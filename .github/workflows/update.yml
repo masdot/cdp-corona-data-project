@@ -27,6 +27,6 @@ jobs:
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "PR URL: ${{ steps.update-script.outputs.pr_url }}"
-          echo "PR ID: ${{ steps.update-script.outputs.pr_id }}"
-          hub api -XPUT "repos/masdot/cdp-corona-data-projects/pulls/${{ steps.update-script.outputs.pr_id }}/merge"
+          echo "PR URL: ${{ steps.update-script.outputs.pull_request_url }}"
+          echo "PR ID: ${{ steps.update-script.outputs.pull_request_id }}"
+          hub api -XPUT "repos/masdot/cdp-corona-data-projects/pulls/${{ steps.update-script.outputs.pull_request_id }}/merge"

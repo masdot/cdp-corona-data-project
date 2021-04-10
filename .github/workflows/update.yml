@@ -1,9 +1,7 @@
 name: Data update
 on:
-  workflow_dispatch: # allow for manual trigger
+  workflow_dispatch: # allow manual trigger
   schedule:
-    # These hours are in UTC. i.e. result in a different local time in Germany,
-    # either +1 hour (winter) or +2 hours (summer).
     - cron: "0 0,6,12,18,20 * * *"
 
 jobs:
@@ -15,8 +13,20 @@ jobs:
         with:
           python-version: '3.8' 
           architecture: 'x64'
-      - name: Install dependencies
+      - name: install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r .github/workflows/requirements.txt
-      - run: python scripts/plotter/rki-age_group-cases-deaths.py
+      - name: run update script
+        id: update-script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/plotter/rki-age_group-cases-deaths.py
+      - name: merge prs
+        id: merge-pr
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "PR URL: ${{ steps.update-script.outputs.pr_url }}"
+          echo "PR ID: ${{ steps.update-script.outputs.pr_id }}"
+          hub api -XPUT "repos/masdot/cdp-corona-data-projects/pulls/${{ steps.update-script.outputs.pr_id }}/merge"

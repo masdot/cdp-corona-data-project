@@ -19,4 +19,5 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r .github/workflows/requirements.txt
-      - run: python rki-de.py
+      - run: python scripts/plotter/rki-age_group-cases-deaths.py
+      - run: python scripts/plotter/rki-gender-cases-deaths.py

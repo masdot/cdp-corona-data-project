@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: "3.8"
       - name: 1) pip-install deps
-        run: pip install -r workflows/py-deps.txt
+        run: pip install -r workflows/py-deps
       - name: execute py script
         run: python rki-de.py
         env:

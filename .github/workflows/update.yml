@@ -21,15 +21,16 @@ jobs:
         id: update-script
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
-        run: python scripts/plotter/rki-age_group-cases-deaths.py
+        run: update-action.sh #python scripts/plotter/rki-age_group-cases-deaths.py
       - name: merge prs
         id: merge-pr
         env:
             GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
-        run: | # echo "PR URL: ${{ steps.update-script.outputs.pull_request_url }}"
+        run: | 
+          echo "PR URL: ${{ steps.update-script.outputs.pull_request_url }}"
           echo "PR ID: ${{ steps.update-script.outputs.pr_id }}"
           curl \
             -X PUT \
             -H "Accept: application/vnd.github.v3+json" \
             /repos/masdot/cdp-corona-data-project/pulls/${{ steps.update-script.outputs.pr_id }}/merge \
-            -d '{"commit_title":"commit_title"}'
+            -d '{"commit_title":"Auto update!"}'

@@ -18,14 +18,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r .github/workflows/requirements.txt
       - name: run update script
-        id: update-script
+        id: auto-update-script
         env:
-          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
-        run: update-action.sh #python scripts/plotter/rki-age_group-cases-deaths.py
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash update-action.sh 
       - name: merge prs
         id: merge-pr
         env:
-            GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: | 
            echo "PR URL: ${{ steps.auto-update-script.outputs.pr_url }}"
            echo "PR ID: ${{ steps.auto-update-script.outputs.pr_id }}"

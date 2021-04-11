@@ -27,10 +27,6 @@ jobs:
         env:
             GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
         run: | 
-          echo "PR URL: ${{ steps.update-script.outputs.pull_request_url }}"
-          echo "PR ID: ${{ steps.update-script.outputs.pr_id }}"
-          curl \
-            -X PUT \
-            -H "Accept: application/vnd.github.v3+json" \
-            /repos/masdot/cdp-corona-data-project/pulls/${{ steps.update-script.outputs.pr_id }}/merge \
-            -d '{"commit_title":"Auto update!"}'
+           echo "PR URL: ${{ steps.auto-update-script.outputs.pr_url }}"
+           echo "PR ID: ${{ steps.auto-update-script.outputs.pr_id }}"
+           hub api -XPUT "repos/jgehrcke/covid-19-germany-gae/pulls/${{ steps.auto-update-script.outputs.pr_id }}/merge"

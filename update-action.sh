@@ -42,7 +42,7 @@ fi
 
 python scripts/plotter/rki-age_group-cases-deaths.py
 if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
-    git add plots/rki/age_group-cases-deaths.png || true
+    git add plots/rki/age_group-cases-deaths.png -f || true
     git commit -m "data: plot update ${UPDATE_ID}" || true
 fi
 

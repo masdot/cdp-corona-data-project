@@ -32,18 +32,20 @@ if [[ $GITHUB_ACTIONS == "true" ]]; then
     git config --local user.name "GitHub Action"
 fi
 
+
+python scripts/plotter/rki-age_group-cases-deaths.py
+if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
+    git add plots/rki/age_group-cases-deaths.png -f || true
+    git commit -m "data: plot update ${UPDATE_ID}" || true
+fi
+
+
 if [[ $GITHUB_ACTIONS == "true" ]]; then
     git push --set-upstream origin "${BRANCH_NAME}"
 else
     # git push
     # When run locally skip the rest
     exit
-fi
-
-python scripts/plotter/rki-age_group-cases-deaths.py
-if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
-    git add plots/rki/age_group-cases-deaths.png -f || true
-    git commit -m "data: plot update ${UPDATE_ID}" || true
 fi
 
 

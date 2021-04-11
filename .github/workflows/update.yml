@@ -20,12 +20,12 @@ jobs:
       - name: run update script
         id: update-script
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
         run: python scripts/plotter/rki-age_group-cases-deaths.py
       - name: merge prs
         id: merge-pr
         env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
         run: |
           echo "PR URL: ${{ steps.update-script.outputs.pull_request_url }}"
           echo "PR ID: ${{ steps.update-script.outputs.pull_request_id }}"

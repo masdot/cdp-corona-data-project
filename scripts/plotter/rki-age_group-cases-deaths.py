@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 NOTE: This code is part of CDP (Corona-Data-Proejct) developed by @masdot. 
 Copyright (c) 2021 masdot - Licensed under MIT License (https://github.com/masdot/cdp-corona-data-project/blob/main/LICENSE)

@@ -54,7 +54,7 @@ if [[ $GITHUB_ACTIONS == "true" ]]; then
     # https://github.com/github/hub#github-actions
     # https://hub.github.com/hub-pull-request.1.html
     PR_URL="$(hub pull-request \
-        --base master \
+        --base main \
         --head "${BRANCH_NAME}" \
         --message "Automatic data update ${UPDATE_ID}" \
         --reviewer masdot)"

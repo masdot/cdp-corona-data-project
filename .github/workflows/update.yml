@@ -1,0 +1,31 @@
+name: Data update
+on:
+  workflow_dispatch: # allow manual trigger
+  schedule:
+    - cron: "0 0,6,12,18,20 * * *"
+
+jobs:
+  scheduled-data-update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8' 
+      - name: install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r .github/workflows/requirements.txt
+      - name: run update script
+        id: auto-update-script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash update-action.sh
+      - name: merge prs
+        id: merge-pr
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: | 
+           echo "PR URL: ${{ steps.auto-update-script.outputs.pr_url }}"
+           echo "PR ID: ${{ steps.auto-update-script.outputs.pr_id }}"
+           hub api -XPUT "repos/masdot/cdp-corona-data-project/pulls/${{ steps.auto-update-script.outputs.pr_id }}/merge"

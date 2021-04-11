@@ -28,10 +28,10 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
         run: |
           # echo "PR URL: ${{ steps.update-script.outputs.pull_request_url }}"
-          echo "PR ID: ${{ steps.update-script.outputs.pull_request_id }}"
-          hub api -X PUT "repos/masdot/cdp-corona-data-projects/pulls/${{ steps.update-script.outputs.pull_request_id }}/merge"
-          # curl \
-            # -X PUT \
-            # -H "Accept: application/vnd.github.v3+json" \
-            # /repos/masdot/cdp-corona-data-project/pulls/{pull_number}/merge \
-            # -d '{"commit_title":"commit_title"}'
+          echo "PR ID: ${{ steps.update-script.outputs.pr_id }}"
+          # hub api -X PUT "repos/masdot/cdp-corona-data-projects/pulls/${{ steps.update-script.outputs.pull_request_id }}/merge"
+          curl \
+            -X PUT \
+            -H "Accept: application/vnd.github.v3+json" \
+            /repos/masdot/cdp-corona-data-project/pulls/${{ steps.update-script.outputs.pr_id }}/merge \
+            -d '{"commit_title":"commit_title"}'

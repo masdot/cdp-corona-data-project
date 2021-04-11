@@ -33,12 +33,12 @@ if [[ $GITHUB_ACTIONS == "true" ]]; then
 fi
 
 
-python plots/rki/age_group-cases-deaths.py
+python scripts/plotter/rki-age_group-cases-deaths.py 
 if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
     git add plots/rki/age_group-cases-deaths.png || true
     git commit -m "data: plot update ${UPDATE_ID}" || true 
 fi
-
+ 
 
 if [[ $GITHUB_ACTIONS == "true" ]]; then
     git push --set-upstream origin "${BRANCH_NAME}"

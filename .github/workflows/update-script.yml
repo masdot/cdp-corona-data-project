@@ -1,0 +1,35 @@
+name: Data update
+on:
+  workflow_dispatch: # allow manual trigger
+  schedule:
+    - cron: "0 0,6,12,18,20 * * *"
+
+jobs:
+  scheduled-data-update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8' 
+          architecture: 'x64'
+      - name: install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r .github/workflows/requirements.txt
+      - name: run update script
+        id: update-script
+        env:
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+        run: python scripts/plotter/rki-age_group-cases-deaths.py
+      - name: merge prs
+        id: merge-pr
+        env:
+            GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+        run: | # echo "PR URL: ${{ steps.update-script.outputs.pull_request_url }}"
+          echo "PR ID: ${{ steps.update-script.outputs.pr_id }}"
+          curl \
+            -X PUT \
+            -H "Accept: application/vnd.github.v3+json" \
+            /repos/masdot/cdp-corona-data-project/pulls/${{ steps.update-script.outputs.pr_id }}/merge \
+            -d '{"commit_title":"Updated!"}'

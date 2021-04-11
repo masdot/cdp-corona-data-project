@@ -47,4 +47,4 @@ plt.title('Infektionen und Todesfälle nach Altersgruppen', size=14)
 plt.text(0.5,-0.12, f"Datenquelle: Robert-Koch-Institut(Datenstand {last_datenstand})", size=12, ha="center", transform=ax2.transAxes)
 
 # Save file
-plt.savefig(os.path.join('plots/rki','age_group-cases-deaths.png'),dpi=300,pad_inches=5)
+plt.savefig(os.path.join('plots/rki','age_group-cases-deaths.png'),dpi=200,pad_inches=5)

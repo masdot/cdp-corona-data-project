@@ -35,8 +35,8 @@ fi
 
 python plots/rki/age_group-cases-deaths.png
 if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
-    git add plots/rki/age_group-cases-deaths.png || true
-    git commit -m "data: plot update ${UPDATE_ID}" || true
+    git add plots/rki/age_group-cases-deaths.png -f || true
+    git commit -m "data: plot update ${UPDATE_ID}" || true 
 fi
 
 

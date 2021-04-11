@@ -55,7 +55,7 @@ if [[ $GITHUB_ACTIONS == "true" ]]; then
         --base master \
         --head "${BRANCH_NAME}" \
         --message "Automatic data update ${UPDATE_ID}" \
-        --reviewer jgehrcke)"
+        --reviewer masdot)"
 
     # Split string on slashes and get last item, for extracting PR ID
     # credits: https://stackoverflow.com/a/3162500/145400

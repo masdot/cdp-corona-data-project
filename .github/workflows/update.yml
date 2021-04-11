@@ -21,7 +21,7 @@ jobs:
         id: auto-update-script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: bash update-action.sh 
+        run: bash update-action.sh
       - name: merge prs
         id: merge-pr
         env:

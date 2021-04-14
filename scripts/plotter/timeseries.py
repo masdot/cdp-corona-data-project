@@ -1,10 +1,7 @@
 """
-NOTE: This code is part of CDP (Corona-Data-Proejct) developed by @masdot. 
-Copyright (c) 2021 masdot - Licensed under MIT License (https://github.com/masdot/cdp-corona-data-project/blob/main/LICENSE)
----
+This file uses the current data CSV (^1) from RKI to plot infection and death cases in an timeseries.
 
-
-This file uses the current data CSV from the RKI to plot infection and death cases in an timeseries.
+^1: https://npgeo-corona-npgeo-de.hub.arcgis.com/datasets/dd4580c810204019a7b8eb3e0b329dd6_0
 """
 
 import os
@@ -13,8 +10,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
+# Change float format for pandas (1.0 -> 1)
 pd.options.display.float_format = '{:,.0f}'.format
 
+
+# Get data
 RKIData = pd.read_csv(
     'https://opendata.arcgis.com/datasets/dd4580c810204019a7b8eb3e0b329dd6_0.csv',
      
@@ -47,7 +47,7 @@ refdates = RKIDataRef['Refdatum']
 refdatum = [datetime.datetime.strptime(d[:-12],"%Y/%m/%d").date() for d in refdates]
 
 
-def plotOne():
+def main():
     # Figure size
     plt.figure(figsize=(14.0, 8.0))
 
@@ -57,12 +57,11 @@ def plotOne():
     locator = mdates.DayLocator()
     ax.xaxis.set_major_locator(locator)
 
-
-    # Solution via: https://stackoverflow.com/questions/50820043/hiding-xticks-labels-every-n-th-label-or-on-value-on-pandas-plot-make-x-axis-r
+    # Solution by: https://stackoverflow.com/questions/50820043/hiding-xticks-labels-every-n-th-label-or-on-value-on-pandas-plot-make-x-axis-r
     # Print just x datetime dates
     plt.gca().xaxis.set_major_locator(plt.MaxNLocator(8))
 
-    # Fälle nach Meldedatum 
+    # Cases for 'Meldedatum' 
     plt.plot(
         meldedatum, 
         RKIDataMelde['AnzahlFall'], 
@@ -73,7 +72,7 @@ def plotOne():
         label='Anzahl Fälle nach Meldedatum', 
     )
 
-    # Fälle nach Refdatum
+    # Cases for 'Refdatum'
     plt.plot(
         refdatum, 
         RKIDataRef['AnzahlFall'], 
@@ -85,7 +84,7 @@ def plotOne():
     )
 
 
-    # Todesfälle nach Meldedatum
+    # deaths for 'Meldedatum'
     plt.plot(
         meldedatum, 
         RKIDataMelde['AnzahlTodesfall'], 
@@ -96,7 +95,7 @@ def plotOne():
         label='Anzahl Todesfälle nach Meldedatum', 
     )
 
-    # Todesfälle nach Refdatum
+    # deaths for 'Refdatum'
     plt.plot(
         refdatum, 
         RKIDataRefClean['AnzahlTodesfall'], 
@@ -107,16 +106,19 @@ def plotOne():
         label='Anzahl Todesfälle nach Refdatum', 
     )
 
+    # add labeling 
     plt.title('Gemeldete Fälle und Todesfälle')
     plt.ylabel('Anzahl')
     plt.xlabel('')
 
+    # remove borders
     plt.gca().spines["top"].set_alpha(0.0)    
     plt.gca().spines["bottom"].set_alpha(0.5)
     plt.gca().spines["right"].set_alpha(0.0)    
     plt.gca().spines["left"].set_alpha(0.5)   
     plt.legend(loc='upper right', ncol=2, fontsize=12)
 
+    # add link to repo 
     plt.text(
             0.005,
             0.01,
@@ -126,6 +128,7 @@ def plotOne():
             color="#666666",
     )
 
+    # added data source and last "Datenstand"
     plt.text(
       0.5,
       -0.12, 
@@ -136,7 +139,11 @@ def plotOne():
       color='black',
     )
 
+    # Add legend 
     plt.legend()
+
+    # Save plot
     plt.savefig(os.path.join('plots/rki','timeseries.png'),dpi=200,pad_inches=5)
 
-plotOne()
+if __name__ == "__main__":
+    main()

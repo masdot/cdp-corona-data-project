@@ -1,3 +1,4 @@
+# Action by: https://github.com/jgehrcke/covid-19-germany-gae
 name: Update
 on:
   workflow_dispatch: # allow manual trigger

@@ -15,8 +15,8 @@
 
 [![Update](https://github.com/masdot/cdp-corona-data-project/actions/workflows/main.yml/badge.svg?event=workflow_dispatch)](https://github.com/masdot/cdp-corona-data-project/actions/workflows/main.yml)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
-![Maintaner](https://img.shields.io/badge/maintainer-masdot-blue)
-[![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+[![Maintaner](https://img.shields.io/badge/maintainer-masdot-blue)](https://github.com/masdot)
+[![MIT license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://github.com/masdot/cdp-corona-data-project/blob/main/LICENSE)
 
 [![made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 

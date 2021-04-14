@@ -1,5 +1,5 @@
 <p align="center">
- <a href="https://github.com/masdot/cdp-corona-data-project"><img src="https://github.com/masdot/cdp-corona-data-project/docs/.media/img/cdp-logo.png" width="400"></a>
+ <a href="https://github.com/masdot/cdp-corona-data-project"><img src="https://raw.githubusercontent.com/masdot/cdp-corona-data-project/main/docs/.media/img/cdp-logo.png" width="400"></a>
 </p>
 
 <p align="center">

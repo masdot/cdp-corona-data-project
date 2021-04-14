@@ -7,7 +7,7 @@
     <a href="#überblick">Überblick</a> •
     <a href="#documentation">Documentation</a> •
     <a href="https://github.com/masdot/cdp-corona-data-project/blob/main/LICENSE" >Licensing</a> •
-    <a href="#how-to-contribute">How to Contribute</a>
+    <a href="https://github.com/masdot/cdp-corona-data-project/blob/main/CONTRIBUTING.md">How to Contribute</a>
 </p>
 <hr />
 
@@ -41,5 +41,3 @@
 ## Documentation
 This section will be added soon.
 
-## How to contribute
-This section will be added soon.

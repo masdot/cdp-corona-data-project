@@ -17,6 +17,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
 [![Maintaner](https://img.shields.io/badge/maintainer-masdot-blue)](https://github.com/masdot)
 [![MIT license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://github.com/masdot/cdp-corona-data-project/blob/main/LICENSE)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md) 
 
 [![made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 

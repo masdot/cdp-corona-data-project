@@ -40,11 +40,7 @@ def main():
   RKIData_cdr_by_ref_clean.sum().reset_index()
   RKIData_cdr_by_ref = RKIData_cdr_by_ref_clean
 
-
-  # print(RKIData_cdr_by_melde.head())
-  # print(RKIData_cdr_by_ref.head())
-
-    # Save export RKI dataframe by 'Meldedatum'
+  # Save export RKI dataframe by 'Meldedatum'
   RKIData_cdr_by_melde.to_csv(r'./data/rki/rki-cdr-melde.csv', index = False),
   # Save export RKI dataframe by 'Refdatum'
   RKIData_cdr_by_ref.to_csv(r'./data/rki/rki-cdr-ref.csv', index = False)

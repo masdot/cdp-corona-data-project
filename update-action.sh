@@ -26,8 +26,6 @@ fi
 
 
 if [[ $GITHUB_ACTIONS == "true" ]]; then
-    # https://github.community/t/github-actions-bot-email-address/17204
-    # https://github.com/actions/checkout/issues/13#issuecomment-724415212
     git config --local user.email "action@github.com"
     git config --local user.name "GitHub Action"
 fi
@@ -44,6 +42,14 @@ if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
     git add plots/rki/timeseries.png || true
     git commit -m "data: timeseries plot updated ${UPDATE_ID}" || true 
 fi
+
+python scripts/data-parser/build-rki-csv.py
+if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
+    git add /data/rki/rki-cdr-melde.csv || true
+    git add /data/rki/rki-cdr-ref.csv || true
+    git commit -m "data: csvs updated ${UPDATE_ID}" || true 
+fi
+
 
 if [[ $GITHUB_ACTIONS == "true" ]]; then
     git push --set-upstream origin "${BRANCH_NAME}"

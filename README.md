@@ -5,7 +5,7 @@
 <p align="center">
     <a href="#overview">Overview</a> •
     <a href="#überblick">Überblick</a> •
-    <a href="#documentation">Documentation</a> •
+    <a href="https://github.com/masdot/cdp-corona-data-project/wiki">Documentation</a> •
     <a href="https://github.com/masdot/cdp-corona-data-project/blob/main/LICENSE" >Licensing</a> •
     <a href="https://github.com/masdot/cdp-corona-data-project/blob/main/CONTRIBUTING.md">How to Contribute</a>
 </p>
@@ -39,6 +39,7 @@
 - Detaillierte Dokumentation
 - Freie Nutzung der Daten, Berichte & Plots nach [MIT-Lizenz](https://github.com/masdot/cdp-corona-data-project/blob/main/LICENSE)
 
-## Documentation
-This section will be added soon.
+<br />
 
+
+![Timeseries plot](https://github.com/masdot/cdp-corona-data-project/blob/main/plots/rki/timeseries.png)

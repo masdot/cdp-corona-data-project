@@ -39,4 +39,7 @@
 - Detaillierte Dokumentation
 - Freie Nutzung der Daten, Berichte & Plots nach [MIT-Lizenz](https://github.com/masdot/cdp-corona-data-project/blob/main/LICENSE)
 
+<br />
+
+
 ![Timeseries plot](https://github.com/masdot/cdp-corona-data-project/blob/main/plots/rki/timeseries.png)

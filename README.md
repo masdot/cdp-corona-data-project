@@ -42,4 +42,4 @@
 <br />
 
 
-![Timeseries plot](https://github.com/masdot/cdp-corona-data-project/blob/main/plots/rki/timeseries.png)
+![Timeseries plot](https://raw.githubusercontent.com/masdot/cdp-corona-data-project/main/plots/rki/timeseries-cd-r-m.en.png)

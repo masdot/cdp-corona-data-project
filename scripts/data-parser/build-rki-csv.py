@@ -22,7 +22,7 @@ def main():
   )
 
   # Clean df: remove cols
-  RKIData = RKIData.drop(["Altersgruppe2","ObjectId","IdBundesland","Bundesland","Landkreis","Altersgruppe","Geschlecht","IdLandkreis","Datenstand","NeuerFall","NeuerTodesfall","NeuGenesen","IstErkrankungsbeginn"],axis=1)
+  RKIData = RKIData.drop(["Altersgruppe2","ObjectId","IdBundesland","Bundesland","Landkreis","Altersgruppe","Geschlecht","IdLandkreis","NeuerFall","NeuerTodesfall","NeuGenesen","IstErkrankungsbeginn"],axis=1)
 
   # Create df: cases, deaths, recoverd by 'Meldedatum'
   RKIData_cdr_by_melde = RKIData.drop(["Refdatum"],axis=1)

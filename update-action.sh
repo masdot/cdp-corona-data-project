@@ -57,7 +57,7 @@ if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
     git commit -m "data: csvs updated ${UPDATE_ID}" || true 
 fi
 
-python scripts/plotter/timeseries-c-d-r-m-rw14.py.py
+python scripts/plotter/timeseries-c-d-r-m-rw14.py
 if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
     git add plots/rki/timeseries-c-d-r-m-rw14.de.png || true
     git add plots/rki/timeseries-c-d-r-m-rw14.en.png || true

@@ -39,7 +39,8 @@ fi
 
 python scripts/plotter/timeseries.py 
 if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
-    git add plots/rki/timeseries.png || true
+    git add plots/rki/timeseries-cd-r-m.de.png.png || true
+    git add plots/rki/timeseries-cd-r-m.en.png.png || true
     git commit -m "data: timeseries plot updated ${UPDATE_ID}" || true 
 fi
 

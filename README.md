@@ -43,3 +43,4 @@
 
 
 ![Timeseries plot](https://raw.githubusercontent.com/masdot/cdp-corona-data-project/main/plots/rki/timeseries-cd-r-m.en.png)
+![Timeseries rolling window plot](https://raw.githubusercontent.com/masdot/cdp-corona-data-project/main/plots/rki/timeseries-c-d-r-m-rw14.en.png)

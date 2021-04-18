@@ -30,6 +30,12 @@ if [[ $GITHUB_ACTIONS == "true" ]]; then
     git config --local user.name "GitHub Action"
 fi
 
+python scripts/data-parser/build-rki-csv.py
+if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
+    git add /data/rki/rki-cdr-melde.csv || true
+    git add /data/rki/rki-cdr-ref.csv || true
+    git commit -m "data: csvs updated ${UPDATE_ID}" || true 
+fi
 
 python scripts/plotter/cd-by-age-groups.py
 if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
@@ -44,27 +50,19 @@ if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
     git commit -m "data: timeseries plot updated ${UPDATE_ID}" || true 
 fi
 
-python scripts/data-parser/timeseries-cd-r-m-rw14.py
+python scripts/plotter/timeseries-cd-r-m-rw14.py
 if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
     git add plots/rki/timeseries-cd-r-m-rw14.de.png || true
     git add plots/rki/timeseries-cd-r-m-rw14.en.png  || true
     git commit -m "data: csvs updated ${UPDATE_ID}" || true 
 fi
 
-python scripts/data-parser/timeseries-c-d-r-m-rw14.py.py
+python scripts/plotter/timeseries-c-d-r-m-rw14.py.py
 if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
     git add plots/rki/timeseries-c-d-r-m-rw14.de.png || true
     git add plots/rki/timeseries-c-d-r-m-rw14.en.png || true
     git commit -m "data: csvs updated ${UPDATE_ID}" || true 
 fi
-
-python scripts/data-parser/build-rki-csv.py
-if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
-    git add /data/rki/rki-cdr-melde.csv || true
-    git add /data/rki/rki-cdr-ref.csv || true
-    git commit -m "data: csvs updated ${UPDATE_ID}" || true 
-fi
-
 
 if [[ $GITHUB_ACTIONS == "true" ]]; then
     git push --set-upstream origin "${BRANCH_NAME}"

@@ -244,7 +244,7 @@ def main():
         )
 
         # Add legend 
-        plt.legend()
+        plt.legend(frameon=False)
 
         # Save plot
         plt.savefig(os.path.join('plots/rki','timeseries-cd-r-m.en.png'),dpi=200,pad_inches=5)

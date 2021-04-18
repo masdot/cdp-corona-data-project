@@ -31,7 +31,7 @@ if [[ $GITHUB_ACTIONS == "true" ]]; then
 fi
 
 
-python scripts/plotter/rki-age_group-cases-deaths.py 
+python scripts/plotter/cd-by-age-groups.py
 if [[ $GIT_COMMIT_CHANGES == "yes" ]]; then
     git add plots/rki/age_group-cases-deaths.png || true
     git commit -m "data: age-groups plot update ${UPDATE_ID}" || true 
